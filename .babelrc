@@ -1,0 +1,20 @@
+{
+  "presets": [
+    ["env",{
+      "modules": false,
+      "targets":{
+        "chrome": 50,
+        "firefox": 50,
+        "safari": 10,
+        "ios": 10,
+        "opera": 40,
+        "edge": 13,
+        "ie": 11
+      }
+    }]
+   ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "external-helpers"
+  ]
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <script>if (!window.customElements) { document.write('<!--'); }</script>
+  <script type="text/javascript" src="public/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+  <!--! do not remove -->
+
+  <script src="dist/polyfill.js"></script>
+  <script src="dist/index.js"></script>
+  <script>
+    var ReactionList = window.WCReactions.ReactionList
+    var withConfig = window.WCReactions.mixins.withConfig
+
+    const configuration = new Map([
+      ['joy', {name: ':joy'}],
+      ['thumbsup', {name: ':thumbsup'}],
+      ['thumbsdown', {name: ':thumbsdown', count: 10}],
+    ])
+
+    window.customElements.define('reaction-list', withConfig(ReactionList, configuration));
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var rlist = window.document.getElementById('rlist')
+
+      rlist.addEventListener('reactions-toggle', function(e){
+        const reaction = configuration.get(e.detail.reaction)
+
+        reaction.count = (reaction.count || 0) + 1
+        configuration.set(e.detail.reaction, reaction)
+
+        rlist._configure(configuration)
+      })
+
+    })
+  </script>
+  <h2>Reactions</h2>
+  <reaction-list id="rlist" showall showcount></reaction-list>
+</body>
+</html>

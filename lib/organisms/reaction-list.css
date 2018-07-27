@@ -1,0 +1,25 @@
+.icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.icons.vertical {
+  flex-direction: column;
+}
+
+.icon {
+  cursor: pointer;
+  position: relative;
+  margin-right: 5px;
+}
+
+.icon span {
+  line-height: 0px;
+}
+
+.count {
+  left: -5px;
+  position: inherit;
+  top: 4px;
+  user-select: none;
+}
