@@ -9,17 +9,13 @@
 
 .icon {
   cursor: pointer;
-  position: relative;
+  line-height: var(--reaction-icon-line-height, normal);
   margin-right: 5px;
-}
-
-.icon span {
-  line-height: 0px;
+  position: relative;
 }
 
 .count {
-  left: -5px;
+  left: var(--reaction-count-left, -5px);
   position: inherit;
-  top: 4px;
   user-select: none;
 }
