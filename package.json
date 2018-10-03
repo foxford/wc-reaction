@@ -12,18 +12,18 @@
   "author": "",
   "files": [
     "es",
-    "cjs",
+    "lib",
     "dist"
   ],
   "main": "dist/reactions.min.js",
   "directories": {
-    "lib": "lib"
+    "lib": "src"
   },
   "scripts": {
-    "prebuild": "rm -rf dist es cjs public/node_modules",
+    "prebuild": "rm -rf dist es lib public/node_modules",
     "build": "npm run build:es && npm run build:cjs && npm run build:umd && npm run build:umd:min && npm run build:polyfill && npm run build:polyfill:min",
-    "build:cjs": "cross-env BABEL_ENV=cjs babel lib -d cjs --copy-files",
-    "build:es": "cross-env BABEL_ENV=es babel lib -d es --copy-files",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src -d lib --copy-files",
+    "build:es": "cross-env BABEL_ENV=es babel src -d es --copy-files",
     "build:polyfill": "npm run rollup -- rollup.polyfill.js -o dist/polyfill.js",
     "build:polyfill:min": "cross-env NODE_ENV=production npm run rollup -- rollup.polyfill.js -o dist/polyfill.min.js",
     "build:umd": "npm run rollup -- -o dist/reactions.js",
