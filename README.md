@@ -2,17 +2,9 @@
 
 ### Define module
 
-#### ES
-```html
-<script type="module">
-  import { ReactionList } from '@netology-group/wc-reaction/es/index.js';
-  window.customElements.define('reaction-list', ReactionList);
-</script>
-```
-
 #### UMD
 ```html
-<script src="path/to/dist/index.js"></script>
+<script src="path/to/dist/reactions.min.js"></script>
 <script>window.customElements.define('reaction-list', window.WCReactions.ReactionList);</script>
 ```
 
@@ -27,16 +19,10 @@
 
 ### Demo
 ```sh
+npm run demo
+```
+
+### Run
+```sh
 npm start
 ```
-
-### Run for development
-```sh
-npm run build -- --w
-```
-
-### Build for production
-```sh
-NODE_ENV=production npm run build
-```
-
