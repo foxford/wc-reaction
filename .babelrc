@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["env",{
+    ["babel-preset-env",{
       "modules": false,
       "targets":{
         "chrome": 50,
@@ -14,7 +14,24 @@
     }]
    ],
   "plugins": [
-    "babel-plugin-transform-object-rest-spread",
-    "babel-plugin-external-helpers"
-  ]
+    "babel-plugin-transform-object-rest-spread"
+  ],
+  "env":{
+    "cjs": {
+      "plugins": [
+        "babel-plugin-annotate-pure-calls",
+        "babel-plugin-transform-es2015-modules-commonjs"
+      ]
+    },
+    "es": {
+      "plugins": [
+        "babel-plugin-annotate-pure-calls"
+      ]
+    },
+    "rollup": {
+      "plugins": [
+        "babel-plugin-external-helpers"
+      ]
+    }
+  }
 }

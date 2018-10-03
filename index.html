@@ -8,24 +8,19 @@
 </head>
 <body>
   <script>if (!window.customElements) { document.write('<!--'); }</script>
-  <script type="text/javascript" src="public/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+  <script type="text/javascript" src="./public/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
   <!--! do not remove -->
 
-  <script src="dist/polyfill.js"></script>
-  <script src="dist/index.js"></script>
+  <script src="./dist/polyfill.min.js"></script>
+  <script src="./dist/reactions.min.js"></script>
   <script>
-    var ReactionList = window.WCReactions.ReactionList
-    var withConfig = window.WCReactions.mixins.withConfig
-
     const configuration = new Map([
       ['joy', {name: ':joy'}],
       ['thumbsup', {name: ':thumbsup'}],
       ['thumbsdown', {name: ':thumbsdown', count: 10}],
     ])
 
-    window.customElements.define('reaction-list', withConfig(ReactionList, configuration));
-
-    document.addEventListener('DOMContentLoaded', function(){
+    function initialize(){
       var rlist = window.document.getElementById('rlist')
 
       rlist.addEventListener('reactions-toggle', function(e){
@@ -36,7 +31,15 @@
 
         rlist._configure(configuration)
       })
+    }
 
+    document.addEventListener('DOMContentLoaded', function(){
+      var ReactionList = window.WCReactions.ReactionList
+      var withConfig = window.WCReactions.mixins.withConfig()
+
+      window.customElements.define('reaction-list', withConfig(ReactionList, configuration));
+
+      initialize()
     })
   </script>
   <h2>Reactions</h2>
