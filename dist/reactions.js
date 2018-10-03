@@ -129,21 +129,23 @@
     }));
   };
 
-  var withConfig = function withConfig(base, initialConfig) {
-    return function (_base) {
-      inherits(_class, _base);
+  var withConfig = function withConfig() {
+    return function (base, initialConfig) {
+      return function (_base) {
+        inherits(_class, _base);
 
-      function _class(props) {
-        classCallCheck(this, _class);
+        function _class(props) {
+          classCallCheck(this, _class);
 
-        var _this = possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+          var _this = possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
-        _this.config = initialConfig;
-        return _this;
-      }
+          _this.config = initialConfig;
+          return _this;
+        }
 
-      return _class;
-    }(base);
+        return _class;
+      }(base);
+    };
   };
 
   var mixins = /*#__PURE__*/Object.freeze({
@@ -2018,7 +2020,6 @@
           }
       }
   }
-  //# sourceMappingURL=modify-template.js.map
 
   /**
    * @license
@@ -7243,7 +7244,7 @@
     }
   }
 
-  var css = ".icons {\n  display: flex;\n  flex-direction: row;\n}\n\n.icons.vertical {\n  flex-direction: column;\n}\n\n.icon {\n  cursor: pointer;\n  position: relative;\n  margin-right: 5px;\n}\n\n.icon span {\n  line-height: 0px;\n}\n\n.count {\n  left: -5px;\n  position: inherit;\n  top: 4px;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n";
+  var css = ".icons {\n  display: flex;\n  flex-direction: row;\n}\n\n.icons.vertical {\n  flex-direction: column;\n}\n\n.icon {\n  cursor: pointer;\n  line-height: normal;\n  line-height: var(--reaction-icon-line-height, normal);\n  margin-right: 5px;\n  position: relative;\n}\n\n.count {\n  left: -5px;\n  left: var(--reaction-count-left, -5px);\n  position: inherit;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n";
   styleInject(css);
 
   var _templateObject$1 = taggedTemplateLiteral(['<img src="', '" />'], ['<img src="', '" />']),
