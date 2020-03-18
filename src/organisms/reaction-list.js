@@ -1,3 +1,4 @@
+import {shim} from 'map-tojson'
 import { html, LitElement, classString } from '@polymer/lit-element'
 import { withStyle } from '@netology-group/wc-utils/lib/mixins/mixins'
 import Emoji from 'node-emoji/lib/emoji.js' // eslint-disable-line import/extensions
@@ -36,7 +37,7 @@ export class Reactions extends LitElement {
   }
 
   _renderActions () {
-    return this.config.toJSON().map((...argv) => this._renderReaction(...argv))
+    return ((() => {shim(); return this.config.toJSON})())().map((...argv) => this._renderReaction(...argv));
   }
 
   _renderReaction ([k, v]) {
